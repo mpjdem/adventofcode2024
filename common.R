@@ -40,9 +40,7 @@ solution_fpath <- function(day, part) {
 
   res <- file.path("output", paste0("output", day, "_", part, ".txt"))
 
-  if (!file.exists(res)) {
-    stop(paste0("File ", res, " could not be found!"))
-  }
+  res
 
 }
 
@@ -55,8 +53,8 @@ solution_fpath <- function(day, part) {
 #' @return `NULL`
 #'
 check_solution <- function(day, part, solution) {
-  cat(paste0("Solution to Part ", part, ": ", solution, " - "))
   correct_solution <- readLines(solution_fpath(day, part))
+  cat(paste0("Solution to Part ", part, ": ", solution, " - "))
   if (as.character(solution) == correct_solution) cat("correct!\n") else cat("wrong!\n")
   invisible()
 }
