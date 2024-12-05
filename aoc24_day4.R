@@ -33,6 +33,7 @@ count_diagonal1 <- dt[order(y), count_matches(paste0(char, collapse="")), by = "
 count_diagonal2 <- dt[order(y), count_matches(paste0(char, collapse="")), by = "shiftx_left"][, sum(V1)]
 
 solution_1 <- count_horizontal + count_vertical + count_diagonal1 + count_diagonal2
+check_solution(4, 1, solution_1)
 
 ## -- PART 2 --
 # For every central 'A' character, find the two characters adjacent on a diagonal
@@ -45,3 +46,5 @@ solution_2 <- merge(
   dt_diagonal2[order(y.diag), paste0(char.diag, collapse=""), by=.(x.central, y.central)][V1 %in% c("MS","SM")],
   all=FALSE, by=c("x.central", "y.central")
 )[, .N]
+
+check_solution(4, 2, solution_2)
